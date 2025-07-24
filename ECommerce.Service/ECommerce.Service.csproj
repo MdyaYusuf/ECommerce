@@ -18,4 +18,12 @@
     <ProjectReference Include="..\ECommerce.Models\ECommerce.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Concretes\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Validations\" />
+    <Folder Include="Rules\" />
+    <Folder Include="Profiles\" />
+  </ItemGroup>
+
 </Project>
