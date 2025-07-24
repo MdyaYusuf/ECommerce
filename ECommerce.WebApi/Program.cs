@@ -1,8 +1,14 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using ECommerce.WebApi.Middlewares;
+using ECommerce.DataAccess.Extensions;
+
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddDataAccessDependencies(builder.Configuration);
 
 var app = builder.Build();
 
