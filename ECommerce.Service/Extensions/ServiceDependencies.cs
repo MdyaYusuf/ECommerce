@@ -2,6 +2,7 @@
 using ECommerce.DataAccess.Concretes;
 using ECommerce.Service.Abstracts;
 using ECommerce.Service.Concretes;
+using ECommerce.Service.Profiles;
 using ECommerce.Service.Rules;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -14,6 +15,7 @@ public static class ServiceDependencies
 {
   public static IServiceCollection AddServiceDependencies(this IServiceCollection services)
   {
+    services.AddAutoMapper(typeof(MappingProfiles));
     services.AddScoped<OrderBusinessRules>();
     services.AddScoped<CartBusinessRules>();
     services.AddScoped<ProductBusinessRules>();
@@ -24,6 +26,8 @@ public static class ServiceDependencies
     services.AddScoped<IUnitOfWork, UnitOfWork>();
     services.AddScoped<IOrderService, OrderService>();
     services.AddScoped<ICartService, CartService>();
+    services.AddScoped<IJwtService, JwtService>();
+    services.AddScoped<IAuthenticationService, AuthenticationService>();
     services.AddScoped<IUserService, UserService>();
     services.AddScoped<IRoleService, RoleService>();
     services.AddScoped<IProductService, ProductService>();
