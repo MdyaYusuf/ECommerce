@@ -2,6 +2,8 @@
 import { toast } from "react-toastify";
 import type { IApiError } from "../model/IApiError";
 import { router } from "../router/Routes";
+import type { IRegisterRequest } from "../model/IRegisterRequest";
+import type { ILoginRequest } from "../model/ILoginRequest";
 
 axios.defaults.baseURL = "http://localhost:5063/api/";
 axios.defaults.withCredentials = true;
@@ -57,8 +59,13 @@ const Cart = {
   clearItems: () => queries.post("cart/clear", {})
 }
 
+const Authentication = {
+  login: (formData: ILoginRequest) => queries.post("authentication/login", formData),
+  register: (formData: IRegisterRequest) => queries.post("authentication/register", formData)
+}
+
 const requests = {
-  homePage, Cart
+  homePage, Cart, Authentication
 }
 
 export default requests
