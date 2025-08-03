@@ -25,7 +25,7 @@ public class CategoriesController(ICategoryService _categoryService) : Controlle
     return Ok(result);
   }
 
-  [HttpGet("getbyid/{id}")]
+  [HttpGet("getbyid/{id:int}")]
   public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
   {
     var result = await _categoryService.GetByIdAsync(id);

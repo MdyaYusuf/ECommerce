@@ -24,7 +24,7 @@ public class RoleBusinessRules
   {
     if (role == null)
     {
-      throw new BusinessException("Rol bulunamadı.");
+      throw new NotFoundException("Rol bulunamadı.");
     }
   }
 

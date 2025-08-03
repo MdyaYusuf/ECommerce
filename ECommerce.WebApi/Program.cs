@@ -20,6 +20,18 @@ builder.Services.AddSession(options =>
   options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy("AllowMyOrigin", policy =>
+  {
+    policy.WithOrigins("http://localhost:3000")
+      .AllowAnyHeader()
+      .AllowAnyMethod()
+      .AllowCredentials()
+      .SetPreflightMaxAge(TimeSpan.FromMinutes(10));
+  });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -84,6 +96,8 @@ app.UseExceptionHandler(_ => { });
 app.UseStaticFiles();
 
 app.UseSession();
+
+app.UseCors("AllowMyOrigin");
 
 app.UseAuthentication();
 app.UseAuthorization();

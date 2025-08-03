@@ -10,7 +10,7 @@ namespace ECommerce.WebApi.Controllers;
 [ApiController]
 public class OrdersController(IOrderService _orderService, CartSessionHelper _helper) : CustomBaseController
 {
-  [HttpGet("getbyid/{id}")]
+  [HttpGet("getbyid/{id:int}")]
   public async Task<IActionResult> GetOrderByIdAsync([FromRoute] int id)
   {
     var result = await _orderService.GetOrderByIdAsync(id);
